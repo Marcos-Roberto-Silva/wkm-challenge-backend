@@ -6,6 +6,27 @@ const createState = async ({ name, uf }) => {
   return state;
 };
 
+const getAllStates = async () => {
+  const states = await States.findAll();
+
+  return states;
+};
+
+const getStateByUf = async (uf) => {
+  const state = await States.findOne({ where: { uf } });
+
+  return state;
+};
+
+const DeleteState = async (uf) => {
+  const state = await States.destroy({ where:{ uf } });
+
+  return state;
+};
+
 module.exports = {
     createState,
+    getAllStates,
+    getStateByUf,
+    DeleteState,
 };

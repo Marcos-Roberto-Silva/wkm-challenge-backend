@@ -13,6 +13,21 @@ const createState = async (request, response) => {
     }
 };
 
+const getAllStates = async (_request, response) => {
+    const states = await statesService.getAllStates();
+    response.status(200).json(states);
+};
+
+const getStateByUf = async (request, response) => {
+    const { uf } = request.params;
+
+    const state = await statesService.getStateByUf(uf);
+
+    response.status(200).json(state);
+};
+
 module.exports = { 
     createState,
+    getAllStates,
+    getStateByUf,
 };

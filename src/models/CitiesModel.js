@@ -8,7 +8,7 @@ const createCities = (sequelize, DataTypes) => {
   );
 
   Cities.associate = (models) => {
-    Cities.belongsTo(models.States, { as: "states", foreignKey: "stateId" });
+    Cities.belongsTo(models.States, { as: "state", foreignKey: "stateId" });
   };
 
   return Cities;

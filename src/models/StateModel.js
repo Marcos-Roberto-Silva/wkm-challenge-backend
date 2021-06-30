@@ -12,7 +12,7 @@ const createState = (sequelize, DataTypes) => {
 
   States.associate = (models) => {
     States.hasMany(models.Cities, {
-      as: "cities",
+      as: "citie",
       foreignKey: "stateId",
     });
   };
