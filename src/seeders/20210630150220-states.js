@@ -6,29 +6,24 @@ module.exports = {
       "States",
       [
         {
-          id: 1,
+          uf: 'RJ',
           name: "Rio de Janeiro",
-          uf: 'RJ'
         },
         {
-          id: 2,
+          uf: 'SP',
           name: "São Paulo",
-          uf: 'SP'
         },
         {
-          id: 3,
+          uf: 'PR',
           name: "Paraná",
-          uf: 'PR'
         },
         {
-          id: 4,
+          uf: 'SC',
           name: "Santa Catarina",
-          uf: 'SC'
         },
         {
-          id: 5,
+          uf: 'MG',
           name: "Minas Gerais",
-          uf: 'MG'
         },
       ],
       {

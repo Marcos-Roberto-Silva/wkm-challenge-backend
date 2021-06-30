@@ -2,10 +2,10 @@ const citiesService = require('../services/CitiesService');
 
 const createCity = async (request, response) => {
     try {
-        const { name, stateId } = request.body;
+        const { name, uf } = request.body;
 
-        const city = await citiesService.createCity({ name, stateId });
-
+        const city = await citiesService.createCity({ name, uf });
+    
         return response.status(201).json(city);
 
     } catch (error) {

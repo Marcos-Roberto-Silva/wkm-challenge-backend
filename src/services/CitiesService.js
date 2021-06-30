@@ -1,8 +1,7 @@
 const { Cities, States } = require("../models");
 
-const createCity = async ({ name, stateId }) => {
-  const city = await Cities.create({ name, stateId });
-
+const createCity = async ({ name, uf }) => {
+  const city = await Cities.create({ name, uf });
   return city;
 };
 
@@ -25,6 +24,18 @@ const getCityAndStateByCityName = async (name) => {
   });
 
   return city;
+};
+
+const updateCity = async ({ nParam, name, ufBody }) => {
+
+  const state = await States.findOne({ where: { uf: ufParam } }).then( async (state) => {
+
+    const stateUpdated = await state.update({ name, uf: ufBody });
+  
+     return stateUpdated;
+  });
+ 
+  return state;
 };
 
 module.exports = {

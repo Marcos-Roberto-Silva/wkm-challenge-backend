@@ -62,7 +62,6 @@ router.get('/states', stateController.getAllStates);
 
  router.get('/states/:uf', stateController.getStateByUf);
 
-
 /**
  * @swagger
  * /cities:
@@ -122,4 +121,6 @@ router.post("/cities", cityController.createCity);
 
  router.get('/cities/:name', cityController.getCityByName);
  router.get('/citiesState/:name', cityController.getCityAndStateByCityName);
+ router.get('/citiesState/:name', cityController.getCityAndStateByCityName);
+
 module.exports = router;

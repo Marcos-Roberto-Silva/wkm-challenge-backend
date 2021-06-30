@@ -20,7 +20,7 @@ const getAllStates = async (_request, response) => {
 
 const getStateByUf = async (request, response) => {
     const { uf } = request.params;
-
+    console.log(uf);
     const state = await statesService.getStateByUf(uf);
 
     response.status(200).json(state);

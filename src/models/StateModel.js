@@ -3,7 +3,11 @@ const createState = (sequelize, DataTypes) => {
     "States",
     {
       name: DataTypes.STRING,
-      uf: DataTypes.STRING,
+      uf: {
+        type: DataTypes.STRING(2),
+        allowNull: false,
+        primaryKey: true,
+      }
     },
     {
       timestamps: false,
@@ -12,8 +16,8 @@ const createState = (sequelize, DataTypes) => {
 
   States.associate = (models) => {
     States.hasMany(models.Cities, {
-      as: "citie",
-      foreignKey: "stateId",
+      as: "city",
+      foreignKey: "uf",
     });
   };
 

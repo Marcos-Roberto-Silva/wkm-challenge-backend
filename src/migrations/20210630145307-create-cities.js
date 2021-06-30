@@ -13,13 +13,14 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      stateId: {
-        type: Sequelize.INTEGER,
+      uf: {
+        type: Sequelize.STRING,
         references: {
           model: 'States',
-          key: 'id',
+          key: 'uf',
         },
         onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
       },
     });
 

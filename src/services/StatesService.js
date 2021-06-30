@@ -18,15 +18,8 @@ const getStateByUf = async (uf) => {
   return state;
 };
 
-const DeleteState = async (uf) => {
-  const state = await States.destroy({ where:{ uf } });
-
-  return state;
-};
-
 module.exports = {
     createState,
     getAllStates,
     getStateByUf,
-    DeleteState,
 };
