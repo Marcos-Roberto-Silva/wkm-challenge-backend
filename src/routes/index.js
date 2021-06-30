@@ -119,8 +119,6 @@ router.post("/cities", cityController.createCity);
  *        description: OK.
  */
 
- router.get('/cities/:name', cityController.getCityByName);
- router.get('/citiesState/:name', cityController.getCityAndStateByCityName);
- router.get('/citiesState/:name', cityController.getCityAndStateByCityName);
+ router.get('/cities/:cep', cityController.searchCity);
 
 module.exports = router;

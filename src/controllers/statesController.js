@@ -5,10 +5,15 @@ const createState = async (request, response) => {
         const { name, uf } = request.body;
 
         const state = await statesService.createState({ name, uf });
-
-        return response.status(201).json(state);
+    
+        if (state.code) {
+            return response.status(state.code).json(state.message );
+        } else {
+            return response.status(201).json(state);
+        }
 
     } catch (error) {
+     
         return response.status(500).json({ message: error });        
     }
 };
@@ -20,9 +25,13 @@ const getAllStates = async (_request, response) => {
 
 const getStateByUf = async (request, response) => {
     const { uf } = request.params;
-    console.log(uf);
+
     const state = await statesService.getStateByUf(uf);
 
+    if (state.code) {
+        return response.status(state.code).json(state.message);
+    }
+    
     response.status(200).json(state);
 };
 

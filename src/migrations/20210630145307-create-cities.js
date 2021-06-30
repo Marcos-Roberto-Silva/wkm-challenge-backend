@@ -1,8 +1,8 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const BlogPostsTable = await queryInterface.createTable('Cities', {
+    const BlogPostsTable = await queryInterface.createTable("Cities", {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -13,14 +13,18 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      cep: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       uf: {
         type: Sequelize.STRING,
         references: {
-          model: 'States',
-          key: 'uf',
+          model: "States",
+          key: "uf",
         },
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
+        onDelete: "CASCADE",
+        onUpdate: "CASCADE",
       },
     });
 
@@ -28,6 +32,6 @@ module.exports = {
   },
 
   down: async (queryInterface, _Sequelize) => {
-    await queryInterface.dropTable('Devices');
-  }
+    await queryInterface.dropTable("Devices");
+  },
 };

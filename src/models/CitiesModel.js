@@ -1,6 +1,7 @@
 const createCities = (sequelize, DataTypes) => {
   const Cities = sequelize.define("Cities", {
       name: DataTypes.STRING,
+      cep: DataTypes.INTEGER,
     },
     {
       timestamps: false,
