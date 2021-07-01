@@ -1,7 +1,15 @@
 const { Cities, States } = require("../models");
 
-const createCity = async ({ name, stateId }) => {
-  const city = await Cities.create({ name, stateId });
+const createCity = async ({ name, cep, uf }) => {
+  const errorMessage = { message: "City already registered", code: 401 };
+
+  const result = await Cities.findOne({ where: { cep } });
+
+  if (result?.cep === cep) {
+    return errorMessage;
+  }
+
+  const city = await Cities.create({ name, cep, uf });
 
   return city;
 };
@@ -12,8 +20,13 @@ const getAllCities = async () => {
   return cities;
 };
 
-const getCityByName = async (name) => {
-  const city = await Cities.findOne({ where: { name } });
+const citySearch = async ({ name, cep }) => {
+  const errorMessage = { message: "City not registered", code: 401 };
+  const city = await Cities.findOne({ where: { cep } });
+
+  if (city == null) {
+    return errorMessage;
+  }
 
   return city;
 };
@@ -27,9 +40,21 @@ const getCityAndStateByCityName = async (name) => {
   return city;
 };
 
+const updateCity = async ({ nParam, name, ufBody }) => {
+  const state = await States.findOne({ where: { uf: ufParam } }).then(
+    async (state) => {
+      const stateUpdated = await state.update({ name, uf: ufBody });
+
+      return stateUpdated;
+    }
+  );
+
+  return state;
+};
+
 module.exports = {
   createCity,
   getAllCities,
-  getCityByName,
-  getCityAndStateByCityName,
+  citySearch,
+  updateCity,
 };

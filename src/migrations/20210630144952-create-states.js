@@ -3,17 +3,13 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const states = await queryInterface.createTable("States", {
-      id: {
-        type: Sequelize.INTEGER,
+      uf: {
+        type: Sequelize.STRING,
         allowNull: false,
-        autoIncrement: true,
+        autoIncrement: false,
         primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
-      uf: {
         type: Sequelize.STRING,
         allowNull: false,
       },

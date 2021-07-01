@@ -8,32 +8,38 @@ module.exports = {
         {
           id: 1,
           name: 'Rio de Janeiro',
-          stateId: 1
+          cep: 22030010,
+          uf: 'RJ',
         },
         {
           id: 2,
           name: 'Bauru',
-          stateId: 2
+          cep: 36010011,
+          uf: 'SP',
         },
         {
           id: 3,
           name: 'Londrina',
-          stateId: 3
+          cep: 36010,
+          uf: 'PR',
         },
         {
           id: 4,
           name: 'Belo Horizonte',
-          stateId: 5
+          cep: 36010001,
+          uf: 'MG',
         },
         {
           id: 5,
           name: 'Juiz de Fora',
-          stateId: 5
+          cep: 25821070,
+          uf: 'MG',
         },
         {
           id: 6,
           name: 'Rio de Bonito',
-          stateId: 1
+          cep: 2880000,
+          uf: 'RJ',
         },
        
       ]);

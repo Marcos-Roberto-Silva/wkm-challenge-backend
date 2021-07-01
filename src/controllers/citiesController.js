@@ -2,9 +2,13 @@ const citiesService = require('../services/CitiesService');
 
 const createCity = async (request, response) => {
     try {
-        const { name, stateId } = request.body;
+        const { name, cep, uf } = request.body;
 
-        const city = await citiesService.createCity({ name, stateId });
+        const city = await citiesService.createCity({ name, cep, uf });
+        console.log(city);
+        if (city.code) {
+            return response.status(city.code).json(city.message);
+        }
 
         return response.status(201).json(city);
 
@@ -18,11 +22,14 @@ const getAllCities = async (_request, response) => {
     response.status(200).json(cities);
 };
 
-const getCityByName = async (request, response) => {
-    const { name } = request.params;
+const searchCity = async (request, response) => {
+    const { cep } = request.params;
 
-    const city = await citiesService.getCityByName(name);
+    const city = await citiesService.citySearch({ cep });
 
+    if (city.code) {
+        response.status(city.code).json(city.message);
+    }
     response.status(200).json(city);
 };
 
@@ -37,6 +44,5 @@ const getCityAndStateByCityName = async (request, response) => {
 module.exports = { 
     createCity,
     getAllCities,
-    getCityByName,
-    getCityAndStateByCityName,
+    searchCity,
 };
