@@ -1,11 +1,11 @@
 const { Cities, States } = require("../models");
 
-const createCity = async ({ name, uf, cep }) => {
+const createCity = async ({ name, cep, uf }) => {
   const errorMessage = { message: "City already registered", code: 401 };
 
-  const result = await Cities.findOne({ where: { name }, $and: { cep } });
+  const result = await Cities.findOne({ where: { cep } });
 
-  if (result.name === name && result.cep === cep) {
+  if (result?.cep === cep) {
     return errorMessage;
   }
 

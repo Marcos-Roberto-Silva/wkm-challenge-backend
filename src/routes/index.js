@@ -1,7 +1,9 @@
 const router = require("express").Router();
+const { body } = require("express-validator");
 
-const stateController = require('../controllers/statesController');
-const cityController = require('../controllers/citiesController');
+const stateController = require("../controllers/statesController");
+const cityController = require("../controllers/citiesController");
+const validator = require("../middleawares/middleFieldValidator");
 
 /**
  * @swagger
@@ -21,14 +23,20 @@ const cityController = require('../controllers/citiesController');
  *        properties:
  *          name:
  *              type: string
- *          uf: 
+ *          uf:
  *              type: string
  *    responses:
  *      '201':
  *        description: Created
  */
 
-router.post("/states", stateController.createState);
+router.post(
+  "/states",
+  body("name").isString().isLength({ min: 4, max: 100 }),
+  body("uf").isString().isLength({ min: 2, max: 2 }),
+  validator,
+  stateController.createState
+);
 
 /**
  * @swagger
@@ -41,7 +49,7 @@ router.post("/states", stateController.createState);
  *        description: OK.
  */
 
-router.get('/states', stateController.getAllStates);
+router.get("/states", stateController.getAllStates);
 
 /**
  * @swagger
@@ -54,13 +62,13 @@ router.get('/states', stateController.getAllStates);
  *      required: true
  *      type: integer
  *      minimum: 1
- *      description: It lists a state by its uf 
+ *      description: It lists a state by its uf
  *    responses:
  *      '200':
  *        description: OK.
  */
 
- router.get('/states/:uf', stateController.getStateByUf);
+router.get("/states/:uf", stateController.getStateByUf);
 
 /**
  * @swagger
@@ -80,14 +88,20 @@ router.get('/states', stateController.getAllStates);
  *        properties:
  *          name:
  *              type: string
- *          stateId: 
+ *          stateId:
  *              type: number
  *    responses:
  *      '201':
  *        description: Created
  */
 
-router.post("/cities", cityController.createCity);
+router.post("/cities",
+  body("name").isString().isLength({ min: 4, max: 100 }),
+  body("cep").not().isString().isLength({ max: 9  }),
+  body("uf").isString().isLength({ min: 2, max: 2 }),
+  validator,
+  cityController.createCity
+);
 
 /**
  * @swagger
@@ -100,7 +114,7 @@ router.post("/cities", cityController.createCity);
  *        description: OK.
  */
 
- router.get('/cities', cityController.getAllCities);
+router.get("/cities", cityController.getAllCities);
 
 /**
  * @swagger
@@ -113,12 +127,12 @@ router.post("/cities", cityController.createCity);
  *      required: true
  *      type: integer
  *      minimum: 1
- *      description: It lists a state by its uf 
+ *      description: It lists a state by its uf
  *    responses:
  *      '200':
  *        description: OK.
  */
 
- router.get('/cities/:cep', cityController.searchCity);
+router.get("/cities/:cep", cityController.searchCity);
 
 module.exports = router;

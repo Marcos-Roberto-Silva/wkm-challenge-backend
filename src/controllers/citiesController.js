@@ -5,7 +5,7 @@ const createCity = async (request, response) => {
         const { name, cep, uf } = request.body;
 
         const city = await citiesService.createCity({ name, cep, uf });
-        
+        console.log(city);
         if (city.code) {
             return response.status(city.code).json(city.message);
         }
