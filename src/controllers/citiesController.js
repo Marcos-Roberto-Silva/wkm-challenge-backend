@@ -1,7 +1,7 @@
 const citiesService = require('../services/CitiesService');
 
 const createCity = async (request, response) => {
-    try {
+  
         const { name, cep, uf } = request.body;
 
         const city = await citiesService.createCity({ name, cep, uf });
@@ -11,10 +11,6 @@ const createCity = async (request, response) => {
         }
 
         return response.status(201).json(city);
-
-    } catch (error) {
-        return response.status(500).json({ message: error });        
-    }
 };
 
 const getAllCities = async (_request, response) => {

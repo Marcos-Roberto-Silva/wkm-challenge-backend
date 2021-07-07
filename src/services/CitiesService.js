@@ -1,10 +1,12 @@
 const { Cities, States } = require("../models");
+const { alreadyRegitered: message } = require("../utils/messageError");
+const { Unauthorized: code } = require("../utils/httpStatus");
 
 const createCity = async ({ name, cep, uf }) => {
-  const errorMessage = { message: "City already registered", code: 401 };
+  const errorMessage = { message, code };
 
   const result = await Cities.findOne({ where: { cep } });
-
+  
   if (result?.cep === cep) {
     return errorMessage;
   }
