@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 const { body } = require("express-validator");
 
@@ -16,7 +17,8 @@ const validator = require("../middleawares/middleFieldValidator");
  *    parameters:
  *      - in: body
  *        name: states
- *        description: It saves a state in the list.
+ *        description: It saves a state in the list. Please set the UF sigle in uppercase characters.
+ 
  *        required: true
  *          - name
  *          - uf

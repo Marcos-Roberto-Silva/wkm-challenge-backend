@@ -1,7 +1,9 @@
+const gitHub ="https://github.com/Marcos-Roberto-Silva"
+
 const swaggerDefinition = {
   info: {
-    title: "REST API Eldorado",
-    description: "REST Node API for manage devices and its categories.",
+    title: "REST API WorkingMinds",
+    description: `REST Node API for manage Cities and States. ${gitHub}`,
   },
   servers: ["http://localhost:3000"],
 };
