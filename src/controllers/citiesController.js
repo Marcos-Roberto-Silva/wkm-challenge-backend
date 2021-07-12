@@ -7,10 +7,10 @@ const createCity = async (request, response) => {
         const city = await citiesService.createCity({ name, cep, uf });
        
         if (city.code) {
-            return response.status(city.code).json({ message: city.message });
+            return response.status(city.code).json({ message: city.message, status: false });
         }
 
-        return response.status(201).json({ message: 'Cidade cadastrada com sucesso.'});
+        return response.status(201).json({ message: 'Cidade cadastrada com sucesso.', status: true });
 };
 
 const getAllCities = async (_request, response) => {

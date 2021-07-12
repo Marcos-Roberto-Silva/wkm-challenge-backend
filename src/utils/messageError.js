@@ -1,9 +1,9 @@
 const messageError = {
-    nameError: 'The field name is required and must be at least 4 characters long.',
-    ufError: 'The field uf is required and must be 2 characters long.',
-    cepError: 'The cep is required and must be a positive number',
-    cityAlreadyRegitered: 'City already registered',
-    stateAlreadyRegitered: 'State already registered',
+    nameError: 'Por favor informe o nome da cidade.',
+    ufError: 'Por favor informe a sigla do estado.',
+    cepError: 'Por favor informe o número do CEP.',
+    cityAlreadyRegitered: 'Esta cidade já foi cadastrada.',
+    stateAlreadyRegitered: 'Este estado já foi cadastrado.',
 
     requestNotFound: false
 };
