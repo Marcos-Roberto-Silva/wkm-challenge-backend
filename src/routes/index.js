@@ -16,7 +16,8 @@ const validator = require("../middleawares/middleFieldValidator");
  *    parameters:
  *      - in: body
  *        name: states
- *        description: It saves a state in the list.
+ *        description: It saves a state in the list. Please write the UF sigle in uppercase characters.
+ 
  *        required: true
  *          - name
  *          - uf
