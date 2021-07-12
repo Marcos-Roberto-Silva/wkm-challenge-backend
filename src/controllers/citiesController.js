@@ -5,8 +5,8 @@ const createCity = async (request, response) => {
         const { name, cep, uf } = request.body;
 
         const city = await citiesService.createCity({ name, cep, uf });
-       
-        if (city.code) {
+      
+        if (city.message && city.code) {
             return response.status(city.code).json({ message: city.message, status: false });
         }
 
