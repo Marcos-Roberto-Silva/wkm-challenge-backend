@@ -10,7 +10,7 @@ const validationFieldContent = (request, response, next) => {
   }
 
   if (!errorObj.isEmpty()) {
-    switch (errorObj.errors[0]?.param) {
+    switch (errorObj.errors[0].param) {
       case "name":
         return response.status(httpstatus.BadRequest).json({ message: errorMsg.nameError });
       case "uf":

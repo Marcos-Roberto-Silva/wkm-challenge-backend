@@ -1,14 +1,19 @@
 const { States } = require('../models');
+const { stateAlreadyRegitered: message } = require("../utils/messageError");
+const { Unauthorized: code } = require("../utils/httpStatus");
 
 const createState = async ({ name, uf }) => {
-    const data = { message: 'State already registered', code: 401 }
+
+    const errorMessage = { message, code };
+
     const result = await States.findOne({ where: { uf } });
 
-    if ( result.uf === uf) {
-      return data;
+    if ( result && result.uf === uf) {
+      return errorMessage;
     }
 
   const state = await States.create({ name, uf });
+
   return state;
 };
 
