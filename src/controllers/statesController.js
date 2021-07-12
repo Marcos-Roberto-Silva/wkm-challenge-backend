@@ -7,9 +7,13 @@ const createState = async (request, response) => {
         const state = await statesService.createState({ name, uf });
     
         if (state.code) {
-            return response.status(state.code).json({ message: state.message });
+
+            if (state.message) {
+                return response.status(state.code).json({ message: state.message, status: false });
+            }
+           
         } else {
-            return response.status(201).json({ message: 'Estado Cadastrado com sucesso.'});
+            return response.status(201).json({ message: 'Estado Cadastrado com sucesso.', status: true});
         }
 };
 

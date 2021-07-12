@@ -4,7 +4,7 @@ const httpstatus = require("../utils/httpStatus");
 
 const validationFieldContent = (request, response, next) => {
   const errorObj = validationResult(request);
- 
+ console.log(errorObj);
   if (request.body.cep < 0) {
     return response.status(httpstatus.BadRequest).json({ message: errorMsg.cepError });
   }

@@ -97,7 +97,7 @@ router.get("/states/:uf", stateController.getStateByUf);
 
 router.post("/cities",
   body("name").isString().isLength({ min: 4, max: 100 }),
-  body("cep").not().isString().isLength({ max: 9  }),
+  body("cep").not().isString(),
   body("uf").isString().isLength({ min: 2, max: 2 }),
   validator,
   cityController.createCity
