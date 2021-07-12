@@ -22,4 +22,6 @@
 
        `npx sequelize db:seed:all`
        
+#### Algumas funcionalidades podem ser testadas acessando a rota `http://localhost:3001/api-docs/#/` com o Swagger.
+       
 Have fun!! 🥳
