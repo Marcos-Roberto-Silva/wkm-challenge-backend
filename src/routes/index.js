@@ -135,6 +135,7 @@ router.get("/cities", cityController.getAllCities);
  *        description: OK.
  */
 
-router.get("/cities/:cep", cityController.searchCity);
+// router.get("/cities/:cep", cityController.searchCity);
+router.delete("/cities/:cep", cityController.deleteCity);
 
 module.exports = router;

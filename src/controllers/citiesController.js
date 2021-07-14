@@ -29,6 +29,14 @@ const searchCity = async (request, response) => {
     response.status(200).json(city);
 };
 
+const deleteCity = async (request, response) => {
+    const { cep } = request.params;
+
+    await citiesService.deleteCity({ cep });
+
+    response.status(200).json({ status: true });
+}
+
 const getCityAndStateByCityName = async (request, response) => {
     const { name } = request.params;
 
@@ -41,4 +49,5 @@ module.exports = {
     createCity,
     getAllCities,
     searchCity,
+    deleteCity,
 };
